@@ -740,6 +740,251 @@
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
+
+    /* =============================================
+       TEAM INTRO SLIDE — SLIDE 0
+    ============================================= */
+    #slide-0::before {
+      background: radial-gradient(ellipse 90% 80% at 50% 50%,
+        rgba(130,60,255,0.22) 0%, rgba(0,100,255,0.13) 55%, transparent 82%);
+    }
+
+    .team-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 52px;
+      text-align: left;
+      width: 100%;
+    }
+
+    /* =============================================
+       SPHERE MASCOT
+    ============================================= */
+    .sphere-mascot-wrap {
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 180px;
+    }
+
+    .sphere-aura {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,99,255,0.28) 0%, transparent 70%);
+      animation: aura-pulse 3.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes aura-pulse {
+      0%, 100% { transform: scale(1);   opacity: 0.5; }
+      50%       { transform: scale(1.2); opacity: 1;   }
+    }
+
+    .sphere-mascot-svg {
+      position: relative;
+      width: 155px;
+      height: auto;
+      animation: sphere-float 3.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 18px rgba(108,99,255,0.55));
+    }
+
+    @keyframes sphere-float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-13px); }
+    }
+
+    .sphere-eye-l { animation: eye-pulse 2.5s ease-in-out infinite; }
+    .sphere-eye-r { animation: eye-pulse 2.5s ease-in-out infinite 0.28s; }
+
+    @keyframes eye-pulse {
+      0%, 100% { opacity: 0.72; }
+      50%       { opacity: 1; }
+    }
+
+    .antenna-inner-pulse { animation: antenna-tip 2s ease-in-out infinite; }
+    .antenna-outer-pulse { animation: antenna-tip 2s ease-in-out infinite 0.15s; }
+
+    @keyframes antenna-tip {
+      0%, 100% { opacity: 0.75; }
+      50%       { opacity: 1; }
+    }
+
+    /* =============================================
+       SPHERE SPEECH & TEAM CARDS
+    ============================================= */
+    .sphere-speech {
+      flex: 1;
+      max-width: 530px;
+      min-width: 0;
+    }
+
+    .sphere-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .sphere-intro-box {
+      background: rgba(108,99,255,0.08);
+      border: 1px solid rgba(108,99,255,0.28);
+      border-radius: 18px;
+      padding: 18px 22px;
+      margin-bottom: 20px;
+      font-size: clamp(13px, 1.6vw, 16px);
+      color: var(--text-primary);
+      line-height: 1.75;
+      min-height: 78px;
+      position: relative;
+    }
+
+    .sphere-intro-box::before {
+      content: '';
+      position: absolute;
+      left: -12px;
+      top: 22px;
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-right: 12px solid rgba(108,99,255,0.28);
+    }
+
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--accent2);
+      margin-left: 1px;
+      vertical-align: text-bottom;
+      animation: tw-blink 0.8s step-end infinite;
+    }
+
+    @keyframes tw-blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .team-cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .team-member-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card);
+      border: 1px solid rgba(108,99,255,0.28);
+      border-radius: 14px;
+      padding: 13px 17px;
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      transform: translateX(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .team-member-card:hover {
+      border-color: rgba(0,212,255,0.45);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .team-member-card.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .member-icon { font-size: 26px; flex-shrink: 0; }
+
+    .member-info .member-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .member-info .member-role {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 4px;
+    }
+
+    .member-info .member-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* =============================================
+       AUTO-PLAY CONTROLS
+    ============================================= */
+    #autoplay-bar {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 100;
+    }
+
+    #autoplay-indicator {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--accent2);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    #autoplay-indicator.on { opacity: 1; }
+
+    .ap-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(8px);
+      color: var(--text-primary);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+      user-select: none;
+    }
+
+    .ap-btn:hover {
+      background: rgba(108,99,255,0.25);
+      border-color: var(--accent);
+      box-shadow: var(--glow-purple);
+    }
+
+    /* =============================================
+       RESPONSIVE — TEAM SLIDE
+    ============================================= */
+    @media (max-width: 768px) {
+      .team-inner { flex-direction: column; gap: 20px; }
+      .sphere-mascot-wrap { width: 120px; }
+      .sphere-mascot-svg { width: 110px; }
+      .sphere-aura { width: 150px; height: 150px; }
+      .sphere-speech { max-width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -751,7 +996,7 @@
 <div id="progress-bar"></div>
 
 <!-- Slide counter -->
-<div id="slide-counter">1 / 7</div>
+<div id="slide-counter">1 / 8</div>
 
 <!-- Dot indicators -->
 <div id="dots"></div>
@@ -760,13 +1005,110 @@
 <div class="nav-arrow hidden" id="arrow-prev" role="button" aria-label="Previous slide">&#8592;</div>
 <div class="nav-arrow" id="arrow-next" role="button" aria-label="Next slide">&#8594;</div>
 
+<!-- Auto-play controls -->
+<div id="autoplay-bar">
+  <span id="autoplay-indicator">Auto-playing</span>
+  <button class="ap-btn" id="btn-mute" title="Toggle narration" aria-label="Toggle narration">🔊</button>
+  <button class="ap-btn" id="btn-play" title="Auto-play" aria-label="Toggle auto-play">▶</button>
+</div>
+
 <!-- =========================================
      PRESENTATION
 ========================================= -->
 <div id="presentation">
 
+  <!-- ==================== SLIDE 0 — TEAM INTRODUCTION ==================== -->
+  <section class="slide active" id="slide-0" role="region" aria-label="Team Introduction">
+    <div class="slide-inner team-inner">
+
+      <!-- Left: Sphere mascot -->
+      <div class="sphere-mascot-wrap">
+        <div class="sphere-aura"></div>
+        <svg class="sphere-mascot-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 210" aria-hidden="true">
+          <defs>
+            <radialGradient id="sBodyGrad" cx="40%" cy="35%" r="65%">
+              <stop offset="0%"   stop-color="#2a2070"/>
+              <stop offset="100%" stop-color="#0d0b2e"/>
+            </radialGradient>
+            <filter id="sEyeGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="sSoftGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Antenna -->
+          <rect x="67" y="32" width="6" height="30" rx="3" fill="#6c63ff"/>
+          <circle cx="70" cy="22" r="11" fill="rgba(108,99,255,0.25)" class="antenna-outer-pulse"/>
+          <circle cx="70" cy="22" r="7"  fill="#6c63ff" filter="url(#sSoftGlow)"/>
+          <circle cx="70" cy="22" r="4"  fill="#00d4ff" class="antenna-inner-pulse"/>
+          <!-- Body -->
+          <ellipse cx="70" cy="138" rx="56" ry="60" fill="url(#sBodyGrad)" stroke="rgba(108,99,255,0.6)" stroke-width="1.5"/>
+          <!-- Face plate -->
+          <ellipse cx="70" cy="128" rx="42" ry="42" fill="rgba(20,15,60,0.8)" stroke="rgba(108,99,255,0.3)" stroke-width="1"/>
+          <!-- Eye sockets -->
+          <ellipse cx="54" cy="118" rx="11" ry="12" fill="#06040e"/>
+          <ellipse cx="86" cy="118" rx="11" ry="12" fill="#06040e"/>
+          <!-- Eye glows -->
+          <circle cx="54" cy="118" r="7" fill="#00d4ff" filter="url(#sEyeGlow)" class="sphere-eye-l"/>
+          <circle cx="86" cy="118" r="7" fill="#00d4ff" filter="url(#sEyeGlow)" class="sphere-eye-r"/>
+          <!-- Eye shine -->
+          <circle cx="50" cy="114" r="2.5" fill="white" opacity="0.6"/>
+          <circle cx="82" cy="114" r="2.5" fill="white" opacity="0.6"/>
+          <!-- Smile -->
+          <path d="M 52 140 Q 70 157 88 140" stroke="#00d4ff" stroke-width="3" fill="none" stroke-linecap="round" filter="url(#sEyeGlow)"/>
+          <!-- Ear panels -->
+          <rect x="12" y="110" width="13" height="24" rx="6.5" fill="rgba(108,99,255,0.4)" stroke="rgba(108,99,255,0.5)" stroke-width="1"/>
+          <rect x="115" y="110" width="13" height="24" rx="6.5" fill="rgba(108,99,255,0.4)" stroke="rgba(108,99,255,0.5)" stroke-width="1"/>
+          <circle cx="18.5" cy="122" r="3" fill="#00d4ff" opacity="0.75"/>
+          <circle cx="121.5" cy="122" r="3" fill="#00d4ff" opacity="0.75"/>
+          <!-- Chest detail -->
+          <ellipse cx="70" cy="184" rx="38" ry="11" fill="rgba(108,99,255,0.2)" stroke="rgba(108,99,255,0.3)" stroke-width="1"/>
+          <path d="M 54 162 Q 70 170 86 162" stroke="rgba(0,212,255,0.35)" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+
+      <!-- Right: Speech + team cards -->
+      <div class="sphere-speech">
+        <div class="sphere-label">— Sphere is speaking —</div>
+        <div class="sphere-intro-box">
+          <span id="sphere-typewriter"></span><span class="typewriter-cursor" id="tw-cursor"></span>
+        </div>
+        <div class="team-cards-grid">
+          <div class="team-member-card">
+            <span class="member-icon">🏛️</span>
+            <div class="member-info">
+              <div class="member-name">Wenhua Li</div>
+              <div class="member-role">Visionary Architect</div>
+              <div class="member-desc">"She imagined how I think and reason."</div>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <span class="member-icon">🎨</span>
+            <div class="member-info">
+              <div class="member-name">Haixia Cai</div>
+              <div class="member-role">Experience Designer</div>
+              <div class="member-desc">"She makes sure I'm a joy to use."</div>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <span class="member-icon">🧭</span>
+            <div class="member-info">
+              <div class="member-name">Susi Sun</div>
+              <div class="member-role">Strategy Master</div>
+              <div class="member-desc">"She ensures I solve the right problems."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ==================== SLIDE 1 — TITLE ==================== -->
-  <section class="slide active" id="slide-1" role="region" aria-label="Title Slide">
+  <section class="slide" id="slide-1" role="region" aria-label="Title Slide">
     <!-- Orbiting decoration rings (only on title slide) -->
     <div class="hero-decoration">
       <div class="orbit-ring ring-1"></div>
@@ -1137,9 +1479,12 @@
     arrowNext.classList.toggle('hidden', current === totalSlides - 1);
   }
 
-  function goTo(index) {
+  function goTo(index, byAutoPlay) {
     if (isAnimating || index === current) return;
     if (index < 0 || index >= totalSlides) return;
+
+    /* Manual navigation pauses auto-play */
+    if (!byAutoPlay && isAutoPlaying) { stopAutoPlay(); }
 
     isAnimating = true;
     const prev = current;
@@ -1158,7 +1503,17 @@
     /* Animate in new slide */
     slides[current].classList.add('active');
 
+    /* Typewriter for team slide */
+    if (current === 0) {
+      setTimeout(startTypewriter, 450);
+    } else if (prev === 0) {
+      resetTypewriter();
+    }
+
     updateUI();
+
+    /* Narration during auto-play */
+    if (isAutoPlaying) { speak(NARRATION_SCRIPTS[current] || ''); }
 
     setTimeout(() => { isAnimating = false; }, 700);
   }
@@ -1200,6 +1555,146 @@
 
   /* Initial UI state */
   updateUI();
+
+  /* ===================================================
+     TYPEWRITER EFFECT (Team Intro Slide)
+  =================================================== */
+  const typewriterEl = document.getElementById('sphere-typewriter');
+  const twCursor     = document.getElementById('tw-cursor');
+  const teamCards    = document.querySelectorAll('.team-member-card');
+
+  const SPHERE_SCRIPT = "Hi! I\u2019m Sphere \u2014 your future AI work companion! \uD83D\uDC4B\nLet me introduce the brilliant minds behind me...";
+
+  let twIdx       = 0;
+  let twText      = '';
+  let twTimeout   = null;
+  let twDone      = false;
+
+  function startTypewriter() {
+    twIdx = 0; twText = ''; twDone = false;
+    if (typewriterEl) typewriterEl.innerHTML = '';
+    if (twCursor) twCursor.style.display = 'inline-block';
+    teamCards.forEach(c => c.classList.remove('show'));
+
+    function typeNext() {
+      if (twIdx < SPHERE_SCRIPT.length) {
+        const ch = SPHERE_SCRIPT[twIdx++];
+        if (ch === '\n') { twText += '<br/>'; } else {
+          twText += ch === '&' ? '&amp;' : ch === '<' ? '&lt;' : ch === '>' ? '&gt;' : ch;
+        }
+        typewriterEl.innerHTML = twText;
+        twTimeout = setTimeout(typeNext, 42);
+      } else {
+        twDone = true;
+        teamCards.forEach((card, i) => {
+          setTimeout(() => card.classList.add('show'), i * 700 + 350);
+        });
+      }
+    }
+    twTimeout = setTimeout(typeNext, 550);
+  }
+
+  function resetTypewriter() {
+    if (twTimeout) { clearTimeout(twTimeout); twTimeout = null; }
+    if (typewriterEl) typewriterEl.innerHTML = '';
+    if (twCursor) twCursor.style.display = 'inline-block';
+    teamCards.forEach(c => c.classList.remove('show'));
+    twDone = false; twIdx = 0; twText = '';
+  }
+
+  /* ===================================================
+     AUTO-PLAY & NARRATION
+  =================================================== */
+  /* Default slide duration (ms); team intro slide (index 0) gets longer */
+  const AUTO_DURATION_DEFAULT = 8000;
+  const AUTO_DURATION_TEAM    = 15000;
+
+  function getAutoPlayDuration(slideIndex) {
+    return slideIndex === 0 ? AUTO_DURATION_TEAM : AUTO_DURATION_DEFAULT;
+  }
+
+  /* Per-slide narration scripts */
+  const NARRATION_SCRIPTS = [
+    "Hi! I'm Sphere, your future AI work companion! Let me introduce the brilliant minds behind me. " +
+      "Wenhua Li, the Visionary Architect who imagined how I think and reason. " +
+      "Haixia Cai, the Experience Designer who makes sure I'm a joy to use. " +
+      "And Susi Sun, the Strategy Master who ensures I solve the right problems.",
+    "Work Sphere — AI-Driven Personal Work Intelligence. A visionary, high-impact, totally new way of working.",
+    "The Problem We Are Solving. Employees face tool overload, fragmented work, and cognitive drain from navigating too many systems.",
+    "Imagine a New Way of Working. When you open your computer, you don't open apps. We shift from app-centric work to human-centric intelligence.",
+    "What Work Sphere Does. Daily and weekly planning, case awareness, pending actions, background integration, contextual prompts, and easy reprioritization.",
+    "Agent Thinking — Beyond Process. Work Sphere is a Position Agent: person-centric, adaptive, and with cross-tool reach.",
+    "Value and Impact. Reduces cognitive load, improves execution quality, redefines the work experience, with H-R-C as an early adopter.",
+    "Let's Build the Future of Work Together. Work Sphere is more than a product — it's a new philosophy for how humans and AI collaborate at work."
+  ];
+
+  let autoPlayTimer  = null;
+  let isAutoPlaying  = false;
+  let isMuted        = false;
+
+  const btnPlay           = document.getElementById('btn-play');
+  const btnMute           = document.getElementById('btn-mute');
+  const autoplayIndicator = document.getElementById('autoplay-indicator');
+
+  function speak(text) {
+    if (isMuted || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.rate = 0.95; utt.pitch = 1.05;
+    window.speechSynthesis.speak(utt);
+  }
+
+  function stopSpeech() {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+  }
+
+  function clearAutoTimer() {
+    if (autoPlayTimer) { clearTimeout(autoPlayTimer); autoPlayTimer = null; }
+  }
+
+  function scheduleNextSlide() {
+    clearAutoTimer();
+    autoPlayTimer = setTimeout(() => {
+      if (!isAutoPlaying) return;
+      if (current < totalSlides - 1) {
+        goTo(current + 1, true);
+        scheduleNextSlide();
+      } else {
+        stopAutoPlay();
+      }
+    }, getAutoPlayDuration(current));
+  }
+
+  function startAutoPlay() {
+    isAutoPlaying = true;
+    btnPlay.textContent = '⏸';
+    btnPlay.title = 'Pause';
+    autoplayIndicator.classList.add('on');
+    speak(NARRATION_SCRIPTS[current] || '');
+    scheduleNextSlide();
+  }
+
+  function stopAutoPlay() {
+    isAutoPlaying = false;
+    clearAutoTimer();
+    btnPlay.textContent = '▶';
+    btnPlay.title = 'Auto-play';
+    autoplayIndicator.classList.remove('on');
+    stopSpeech();
+  }
+
+  btnPlay.addEventListener('click', () => {
+    if (isAutoPlaying) { stopAutoPlay(); } else { startAutoPlay(); }
+  });
+
+  btnMute.addEventListener('click', () => {
+    isMuted = !isMuted;
+    btnMute.textContent = isMuted ? '🔇' : '🔊';
+    if (isMuted) stopSpeech();
+  });
+
+  /* Start typewriter on initial load (team slide is first) */
+  setTimeout(startTypewriter, 500);
 </script>
 
 </body>
